@@ -2,8 +2,11 @@ from queue import Queue
 
 class ImageQueue:
 
+    image_queue = Queue(maxsize = 3)
+
     def __init__(self):
-        ImageQueue.image_queue = Queue(maxsize = 50)
+        pass
+        # ImageQueue.image_queue = Queue(maxsize = 50)
         # Need to give a max size otherwise program could run into memory overflow
 
     @staticmethod
@@ -13,6 +16,7 @@ class ImageQueue:
             return
         try:
             ImageQueue.image_queue.put_nowait(src_path)
+            print("Image added to queue: %s %s" % (ImageQueue.get_num_images_in_queue(), src_path))
         except Exception as e:
             print("Exception occured while adding image: %s" % e)
     
